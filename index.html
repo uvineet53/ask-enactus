@@ -55,12 +55,32 @@ body{
         background-color: #e9c40d;
     }
     </style>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script>
+        function submit(){
+        document.getElementById("submitBtn").addEventListener("click", ()=>{
+            alert("Your question has been recorded by us")
+        Let url="https://api.npoint.io/4215f385ae9253ef2efb"
+        $.post("demo_test_post.asp",
+  {
+    email: "kattri_be21@thapar.edu",
+    phone: "9123456789"
+    question: "test"
+  },
+  function(data, status){
+    alert("Data: " + data + "\nStatus: " + status);
+  });
+});
+    });
+  
+    }
+    </script>
 </head>
 <body>
     <div>
         <h3>ask<span>Enactus</span></h3>
         <textarea placeholder="Drop your question here..." rows=5></textarea>
-        <button>Submit</button>
+        <button id="submitBtn" onclick="submit()">Submit</button>
     </div>
 </body>
 </html>
