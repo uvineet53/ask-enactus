@@ -4,8 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-
+    <title>Ask Enactus</title>
     <style>
       div {
         background-color: black;
@@ -46,21 +45,44 @@
         font-size: 14px;
         resize: none;
       }
-      body{
+      body {
         height: 100vh;
         display: grid;
         place-content: center;
       }
-      button:hover{
-          background-color: #e9c40d;
+      button:hover {
+        background-color: #e9c40d;
       }
     </style>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      function submit() {
+        document.getElementById("submitBtn").addEventListener("click", () => {
+          let url = "https://api.npoint.io/56e6e0da01d07e19326a";
+          $.post(
+            url,
+            {
+              email: "uvineet53@gmail.com",
+              phone: "7003850490",
+              question:"test"
+            },
+            function (data, status) {
+              alert("Data: " + data + "\nStatus: " + status);
+            }
+          );
+        });
+      }
+    </script>
   </head>
   <body>
     <div>
       <h3>ask<span>Enactus</span></h3>
       <textarea placeholder="Drop your question here..." rows="5"></textarea>
-      <button>Submit</button>
+      <button id="submitBtn" onclick="submit()">Submit</button>
     </div>
   </body>
 </html>
