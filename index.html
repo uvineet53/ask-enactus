@@ -59,21 +59,23 @@ body{
     <script>
         function submit(){
         document.getElementById("submitBtn").addEventListener("click", ()=>{
-            alert("Your question has been recorded by us")
+           
         Let url="https://api.npoint.io/4215f385ae9253ef2efb"
-        $.post("demo_test_post.asp",
+        $.post(
+            url,
   {
     email: "kattri_be21@thapar.edu",
-    phone: "9123456789"
+    phone: "9123456789",
     question: "test"
   },
   function(data, status){
     alert("Data: " + data + "\nStatus: " + status);
+  }
   });
 });
     });
   
-    }
+    
     </script>
 </head>
 <body>
