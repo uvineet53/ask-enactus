@@ -58,24 +58,26 @@ button:hover{
     background-color: #e9c40a;
 }
     </style>
-    <script src="https://code.jquery.com/jquery-3.6.0.js"
-    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-    crossorigin="anonymous"></script>
+    <script 
+        src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"
+    ></script>
     <script>
-    function sub() {
+      function sub() {
         document.getElementById("subbtn").addEventListener("click", () => {
-            Let url="https://www.npoint.io/docs/0443a1eee94eef854aa2";
+            let url = "https://www.npoint.io/docs/0443a1eee94eef854aa2";
             $.post(
                 url,
             {
-                email:"kadj@gmail.com",
+                email: "kadj@gmail.com",
                 phone: "894502342",
-                question: "test"
+                question:"test"
             },
             function(data, status){
                 alert("Data: " + data + "\nStatus: " + status);
             }
-            );
+          );
         });
     }
     </script>
