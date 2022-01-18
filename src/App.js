@@ -1,21 +1,17 @@
 import React,{useState} from 'react'
 import './App.css'
-import database from '.firebase/database'
-import { getDatabase, ref, set } from "firebase/database"
+import database from './firebase';
+import { getDatabase, ref, set } from "firebase/database";
 
 function App() {
-  
   const [text,setText] = useState('');
-
-  
-    const handleSubmit = async() => {
-      await set(ref(database, 'questions/'+text), {
-        question:text
-      });
-      setText('')
-      alert('Question Submitted Successfully!');
-    }
-  
+  const handleSubmit = async()=> {
+    await set(ref(database, 'questions/'+text), {
+      question:text
+    });
+    setText('');
+    alert('Question Submitted Successfully!');
+  }
   return (
     <div>
       <h3>ask<span>Enactus</span></h3>
