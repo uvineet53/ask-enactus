@@ -65,12 +65,15 @@ button:hover{
     ></script>
     <script>
       function sub() {
-                
-        document.getElementById("subbtn").addEventListener("click", () => {
-            var txt = $("#txtarea").val();
-            alert(txt);
-            let req = new XMLHttpRequest();
 
+
+       
+        document.getElementById("subbtn").addEventListener("click", () => {
+            var txt = $("#query").val();
+            var emid = $("#emailid").val();
+            alert(txt);
+            const rec = JSON.stringify({emid:txt});
+            let req = new XMLHttpRequest();
             req.onreadystatechange = () => {
             if (req.readyState == XMLHttpRequest.DONE) {
                 console.log(req.responseText);
@@ -80,8 +83,8 @@ button:hover{
             req.open("POST", "https://api.jsonbin.io/b", true);
             req.setRequestHeader("Content-Type", "application/json");
             req.setRequestHeader("secret-key", "$2b$10$puPrMI4B/hzt3./4xT2Cs.7WY9ytbMo9JWXcHMgzthtnNKnrZzgiG");
-            req.setRequestHeader("name", "askEnactus2");
-            req.send('{"Katyayani": txt ,"Khushi": "Techie"}');
+            req.setRequestHeader("name", "askEnactus");
+            req.send(rec);
         });
     }
     </script>
@@ -89,7 +92,9 @@ button:hover{
 <body>
 <div>
     <h3>ask<span>Enactus</span></h3>
-    <textarea name="resp" placeholder="Drop your question here..." rows="5" id="txtarea"></textarea>
+
+    <textarea name="resp1" placeholder="Enter your email id..." id="emailid" ></textarea>
+    <textarea name="resp2" placeholder="Drop your question here..." rows="5" id="query"></textarea>
     <button id="subbtn" onclick="sub()">Submit</button>
     
    
