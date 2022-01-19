@@ -3,8 +3,10 @@ import './App.css'
 import database from './firebase';
 import { getDatabase, ref, set } from "firebase/database";
 import validator from 'validator';
+import { v4 as uuid } from 'uuid';
 
 function App() {
+  const unique_id = uuid();
   var validator = require('validator');
   const [text,setText] = useState('');
   const [ed,seted] = useState('');
@@ -23,7 +25,7 @@ function App() {
       setText('');
     }
     else{
-      set(ref(database, 'questions/'+1), {
+      set(ref(database, 'questions/'+unique_id), {
       question:ed+' , '+pn+"  :  "+text
     });
     setText('');
