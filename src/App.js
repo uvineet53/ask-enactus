@@ -37,8 +37,9 @@ function App() {
   return (
     <div>
       <h3>ask<span>Enactus</span></h3>
-      <textarea placeholder="Enter your emailid..." id="emailid"  value={emailid} onChange={e=>setemailid(e.target.value)} ></textarea>
-      <textarea placeholder="Enter your phoneno..." id="phno"  value={phoneno} onChange={e=>setphoneno(e.target.value)}></textarea>
+      
+      <textarea placeholder="Enter your Email ID" id="emailid"  value={emailid} onChange={e=>setemailid(e.target.value)} ></textarea>
+      <textarea placeholder="Enter your Phone No." id="phno"  value={phoneno} onChange={e=>setphoneno(e.target.value)}></textarea>
       <textarea placeholder="Drop your question here..." id="query"  value={text} onChange={e=>setText(e.target.value)}></textarea>
       <button id="submitBtn" onClick={handleSubmit}>Submit</button>
     </div>
