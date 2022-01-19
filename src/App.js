@@ -9,16 +9,16 @@ function App() {
   const unique_id = uuid();
   var validator = require('validator');
   const [text,setText] = useState('');
-  const [ed,seted] = useState('');
-  const [pn,setpn] = useState('');
+  const [emailid,setemailid] = useState('');
+  const [phoneno,setphoneno] = useState('');
   const handleSubmit = async()=> {
-    if(!(validator.isEmail(ed))){
+    if(!(validator.isEmail(emailid))){
       alert("Please enter valid email id");
-      seted('');
+      setemailid('');
     }
-    else if(!(pn).match('[0-9]{10}'))  {
+    else if(!(phoneno).match('[0-9]{10}'))  {
       alert("Please put 10 digit mobile number");
-      setpn('');
+      setphoneno('');
     }
     else if(!text){
       alert("Please enter your query");
@@ -26,19 +26,19 @@ function App() {
     }
     else{
       set(ref(database, 'questions/'+unique_id), {
-      question:ed+' , '+pn+"  :  "+text
+       emailid,phoneno,question:text
     });
     setText('');
-    seted('');
-    setpn('');
+    setemailid('');
+    setphoneno('');
     alert('Question Submitted Successfully!');
   }
   }
   return (
     <div>
       <h3>ask<span>Enactus</span></h3>
-      <textarea placeholder="Enter your emailid..." id="emailid"  value={ed} onChange={e=>seted(e.target.value)} ></textarea>
-      <textarea placeholder="Enter your phoneno..." id="phno"  value={pn} onChange={e=>setpn(e.target.value)}></textarea>
+      <textarea placeholder="Enter your emailid..." id="emailid"  value={emailid} onChange={e=>setemailid(e.target.value)} ></textarea>
+      <textarea placeholder="Enter your phoneno..." id="phno"  value={phoneno} onChange={e=>setphoneno(e.target.value)}></textarea>
       <textarea placeholder="Drop your question here..." id="query"  value={text} onChange={e=>setText(e.target.value)}></textarea>
       <button id="submitBtn" onClick={handleSubmit}>Submit</button>
     </div>
