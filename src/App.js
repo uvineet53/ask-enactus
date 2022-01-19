@@ -15,7 +15,9 @@ function App() {
   return (
     <div>
       <h3>ask<span>Enactus</span></h3>
-      <textarea placeholder="Drop your question here..." rows="5" value={text} onChange={e=>setText(e.target.value)}></textarea>
+      <textarea placeholder="Enter your emailid..." id="emailid"  value={text} onChange={e=>setText(e.target.value)}></textarea>
+      <textarea placeholder="Enter your phoneno..." id="phno"  value={text} onChange={e=>setText(e.target.value)}></textarea>
+      <textarea placeholder="Drop your question here..." id="query" rows="5" value={text} onChange={e=>setText(e.target.value)}></textarea>
       <button id="submitBtn" onClick={handleSubmit}>Submit</button>
     </div>
   )
