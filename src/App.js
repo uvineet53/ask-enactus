@@ -39,8 +39,8 @@ function App() {
   return (
     <div>
       <h3>ask<span>Enactus</span></h3>
-      <textarea placeholder="Enter your email Id here" rows="1" id="emailid" value={emailid} onChange={e=>setEmailid(e.target.value)}></textarea>
-      <textarea placeholder="Enter your mobile number here" rows="1" id="phoneno" value={mobnum} onChange={e=>setMobileNumber(e.target.value)}></textarea>
+      <textarea placeholder="Enter your email Id" rows="1" id="emailid" value={emailid} onChange={e=>setEmailid(e.target.value)}></textarea>
+      <textarea placeholder="Enter your mobile number" rows="1" id="phoneno" value={mobnum} onChange={e=>setMobileNumber(e.target.value)}></textarea>
       <textarea placeholder="Drop your question here..." rows="5" id="query" value={text} onChange={e=>setText(e.target.value)}></textarea>
       <button id="submitBtn" onClick={handleSubmit}>Submit</button>
     </div>
