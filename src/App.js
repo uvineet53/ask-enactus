@@ -23,7 +23,7 @@ function App() {
       setText('');
     }
     else{
-      set(ref(database, 'questions/'+text), {
+      set(ref(database, 'questions/'+1), {
       question:ed+' , '+pn+"  :  "+text
     });
     setText('');
