@@ -1,48 +1,98 @@
-import React,{useState} from 'react'
-import './App.css'
-import database from './firebase';
-import { getDatabase, ref, set } from "firebase/database";
-import validator from 'validator';
-import { v4 as uuid } from 'uuid';
+import React, { useState } from "react";
+import "./App.css";
+import database from "./firebase";
+import { ref, set } from "firebase/database";
+import validator from "validator";
+import { v4 as uuid } from "uuid";
+import useModal from "./components/useModal";
+import Modal from "./components/modal";
+import sendWebhook from "./components/sendWebhook";
+
 function App() {
-  const unique_id = uuid();
-  var validator = require('validator');
-  const [text,setText] = useState('');
-  const [emailid,setemailid] = useState('');
-  const [phoneno,setphoneno] = useState('');
-  const handleSubmit = async()=> {
-    if(!(validator.isEmail(emailid))){
-      alert("Please enter valid email id");
-      setemailid('');
+  const [values, setValues] = useState({
+    email: "",
+    phone: "",
+    question: "",
+  });
+
+  const setVal = (name) => {
+    return ({ target: { value } }) => {
+      setValues((oldValues) => ({ ...oldValues, [name]: value }));
+    };
+  };
+
+  const { isShowing, toggle } = useModal();
+  const [modalText, setModalText] = useState("");
+
+  const saveFormData = async () => {
+    try {
+      set(ref(database, `questions/${uuid()}`), values);
+    } catch (e) {
+      console.log(e.message);
     }
-    else if(!(phoneno).match('[0-9]{10}'))  {
-      alert("Please put 10 digit mobile number");
-      setphoneno('');
+  };
+
+ 
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      if (
+        !validator.isEmail(values.email) ||
+        !values.phone.match("[0-9]{10}") ||
+        values.question === ""
+      ) {
+        setModalText("Form isn't filled correctly!");
+        toggle();
+      } else {
+        await saveFormData();
+        await sendWebhook(values);
+        setModalText("Query Successfully Submitted!");
+        toggle();
+        setValues({
+          id: "",
+          email: "",
+          phone: "",
+          question: "",
+        });
+      }
+    } catch (e) {
+      setModalText(`Failed to Submit ${e.message}`);
+      toggle();
     }
-    else if(!text){
-      alert("Please enter your query");
-      setText('');
-    }
-    else{
-      set(ref(database, 'questions/'+unique_id), {
-       emailid,phoneno,question:text
-    });
-    setText('');
-    setemailid('');
-    setphoneno('');
-    alert('Question Submitted Successfully!');
-  }
-  }
+  };
+
   return (
-    <div>
-      <h3>ask<span>Enactus</span></h3>
-      
-      <textarea placeholder="Enter your Email ID" id="emailid"  value={emailid} onChange={e=>setemailid(e.target.value)} ></textarea>
-      <textarea placeholder="Enter your Phone No." id="phno"  value={phoneno} onChange={e=>setphoneno(e.target.value)}></textarea>
-      <textarea placeholder="Drop your question here..." id="query"  value={text} onChange={e=>setText(e.target.value)}></textarea>
-      <button id="submitBtn" onClick={handleSubmit}>Submit</button>
+    <div id="main">
+      <form onSubmit={onSubmit}>
+        <Modal isShowing={isShowing} hide={toggle} text={modalText} />
+        <h3>
+          ask<span>Enactus</span>
+        </h3>
+        <input
+          placeholder="Enter your Email ID"
+          value={values.email}
+          type="text"
+          onChange={setVal("email")}
+        ></input>
+        <input
+          placeholder="Enter your Phone No."
+          value={values.phone}
+          type="text"
+          onChange={setVal("phone")}
+        ></input>
+        <textarea
+          placeholder="Drop your question here..."
+          value={values.question}
+          rows="5"
+          maxLength="100"
+          onChange={setVal("question")}
+        ></textarea>
+        <button className="submitBtn" type="submit">
+          Submit
+        </button>
+      </form>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -2,14 +2,14 @@ import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyD-HEl8MpJITZb6Hg7Zh4XEbGtKUQd17x0",
-    authDomain: "askenactus.firebaseapp.com",
-    databaseURL: "https://askenactus-default-rtdb.firebaseio.com",
-    projectId: "askenactus",
-    storageBucket: "askenactus.appspot.com",
-    messagingSenderId: "1089423146393",
-    appId: "1:1089423146393:web:a07e68c7cc6404d5e7e708",
-  };
+  apiKey: "AIzaSyCTnXoceXWYSPd6-XfwIbZfPUXKlOIMNtE",
+  authDomain: "ask-enactus.firebaseapp.com",
+  databaseURL: "https://ask-enactus-default-rtdb.firebaseio.com",
+  projectId: "ask-enactus",
+  storageBucket: "ask-enactus.appspot.com",
+  messagingSenderId: "1023336365811",
+  appId: "1:1023336365811:web:db0fad62a74cec843f0186"
+};
 
 const app = initializeApp(firebaseConfig);
 
