@@ -6,9 +6,9 @@ import validator from "validator";
 import { v4 as uuid } from "uuid";
 import useModal from "./components/useModal";
 import Modal from "./components/modal";
-import sendWebhook from "./components/sendWebhook";
 
 function App() {
+  
   const [values, setValues] = useState({
     email: "",
     phone: "",
@@ -45,7 +45,6 @@ function App() {
         toggle();
       } else {
         await saveFormData();
-        await sendWebhook(values);
         setModalText("Query Successfully Submitted!");
         toggle();
         setValues({
