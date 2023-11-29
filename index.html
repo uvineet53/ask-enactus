@@ -1,88 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ask Enactus</title>
-    <style>
-      div {
-        background-color: black;
-        color: white;
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-        width: 400px;
-        padding: 20px 20px;
-        border-radius: 5px;
-      }
-      button {
-        border: none;
-        background-color: #ffe142;
-        color: white;
-        margin-top: 10px;
-        border-radius: 5px;
-        padding: 10px 5px;
-        font-weight: bold;
-        font-size: 16px;
-        transition: 200ms ease-in;
-      }
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
 
-      h3 {
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
-      }
-      span {
-        color: #ffe142;
-      }
-      textarea {
-        width: 100%;
-        height: 150px;
-        padding: 12px 15px;
-        box-sizing: border-box;
-        border: 2px solid black;
-        border-radius: 4px;
-        background-color: white;
-        font-size: 14px;
-        resize: none;
-      }
-      body {
-        height: 100vh;
-        display: grid;
-        place-content: center;
-      }
-      button:hover {
-        background-color: #e9c40d;
-      }
-    </style>
-    <script
-      src="https://code.jquery.com/jquery-3.6.0.js"
-      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-      crossorigin="anonymous"
-    ></script>
-    <script>
-      function submit() {
-        document.getElementById("submitBtn").addEventListener("click", () => {
-          let url = "https://api.npoint.io/56e6e0da01d07e19326a";
-          $.post(
-            url,
-            {
-              email: "uvineet53@gmail.com",
-              phone: "7003850490",
-              question:"test"
-            },
-            function (data, status) {
-              alert("Data: " + data + "\nStatus: " + status);
-            }
-          );
-        });
-      }
-    </script>
-  </head>
-  <body>
-    <div>
-      <h3>ask<span>Enactus</span></h3>
-      <textarea placeholder="Drop your question here..." rows="5"></textarea>
-      <button id="submitBtn" onclick="submit()">Submit</button>
-    </div>
-  </body>
+    .iphone {
+      background: #fff;
+      border-radius: 30px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      position: relative;
+      width: 375px;
+      height: 667px; /* iPhone 6/7/8 size */
+    }
+
+    .screen {
+      background: #f2f2f2;
+      border-radius: 15px;
+      height: 100%;
+      overflow: auto;
+      padding: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="iphone">
+  <div class="screen">
+    <h2 style="text-align: center;">Daily Routine for the Next Month</h2>
+
+    <table>
+      <tr>
+        <th>Time</th>
+        <th>Activity</th>
+      </tr>
+      <tr>
+        <td>8:00 AM - 9:00 AM</td>
+        <td>Breakfast and plan the day</td>
+      </tr>
+      <tr>
+        <td>9:00 AM - 12:00 PM</td>
+        <td>Online courses or tutorials for skill enhancement</td>
+      </tr>
+      <tr>
+        <td>12:00 PM - 1:00 PM</td>
+        <td>Lunch break</td>
+      </tr>
+      <tr>
+        <td>1:00 PM - 4:00 PM</td>
+        <td>Dedicated time for hands-on coding or projects</td>
+      </tr>
+      <tr>
+        <td>4:00 PM - 6:00 PM</td>
+        <td>Physical activity or exercise</td>
+      </tr>
+      <tr>
+        <td>6:00 PM - 7:00 PM</td>
+        <td>Relaxation and reflection</td>
+      </tr>
+      <tr>
+        <td>7:00 PM - 8:00 PM</td>
+        <td>Dinner</td>
+      </tr>
+      <tr>
+        <td>8:00 PM - 10:00 PM</td>
+        <td>Continue with learning or work on personal projects</td>
+      </tr>
+      <tr>
+        <td>10:00 PM</td>
+        <td>Wind down for bed</td>
+      </tr>
+    </table>
+
+    <!-- Repeat the above structure for subsequent weeks -->
+
+  </div>
+</div>
+
+</body>
 </html>
